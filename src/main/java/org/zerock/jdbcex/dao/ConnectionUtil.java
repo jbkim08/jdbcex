@@ -24,4 +24,8 @@ public enum ConnectionUtil {
 
         ds = new HikariDataSource(config);
     }
+    //ds 객체를 가져오는 메소드
+    public Connection getConnection() throws Exception {
+        return ds.getConnection();
+    }
 }
