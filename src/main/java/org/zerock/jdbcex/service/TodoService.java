@@ -1,12 +1,14 @@
 package org.zerock.jdbcex.service;
 
 import com.sun.tools.javac.comp.Todo;
+import lombok.extern.log4j.Log4j2;
 import org.modelmapper.ModelMapper;
 import org.zerock.jdbcex.dao.TodoDAO;
 import org.zerock.jdbcex.domain.TodoVO;
 import org.zerock.jdbcex.dto.TodoDTO;
 import org.zerock.jdbcex.util.MapperUtil;
 
+@Log4j2
 public enum TodoService {
     INSTANCE;
 
@@ -22,7 +24,8 @@ public enum TodoService {
     //화면(유저,브라우저)로 받은 데이터(DTO)를 VO로 변환해서 DB에 저장
     public void register(TodoDTO todoDTO) throws Exception {
         TodoVO todoVO = modelMapper.map(todoDTO, TodoVO.class);
-        System.out.println("todoVO = " + todoVO);
+        //System.out.println("todoVO = " + todoVO);
+        log.info("todoVO: " + todoVO);
         dao.insert(todoVO);
     }
 }
