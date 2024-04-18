@@ -24,6 +24,7 @@ public enum TodoService {
         modelMapper = MapperUtil.INSTANCE.get();
     }
 
+    //새로운 할일을 등록하는 서비스
     //화면(유저,브라우저)로 받은 데이터(DTO)를 VO로 변환해서 DB에 저장
     public void register(TodoDTO todoDTO) throws Exception {
         TodoVO todoVO = modelMapper.map(todoDTO, TodoVO.class);
@@ -47,6 +48,8 @@ public enum TodoService {
 
         return dtoList;
     }
+
+
 
 }
 
