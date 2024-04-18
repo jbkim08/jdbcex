@@ -8,6 +8,9 @@ import org.zerock.jdbcex.domain.TodoVO;
 import org.zerock.jdbcex.dto.TodoDTO;
 import org.zerock.jdbcex.util.MapperUtil;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Log4j2
 public enum TodoService {
     INSTANCE;
@@ -28,4 +31,31 @@ public enum TodoService {
         log.info("todoVO: " + todoVO);
         dao.insert(todoVO);
     }
+
+    //화면에 할일 리스트를 보여주기 위한 서비스
+    public List<TodoDTO> listAll() throws Exception {
+
+        List<TodoVO> voList = dao.selectAll();
+        log.info("voList 를 DB 에서 받음....");
+        log.info("voList: " + voList);
+        // VO => DTO 변환
+        List<TodoDTO> dtoList = new ArrayList<TodoDTO>();
+        for (TodoVO vo : voList) {
+            TodoDTO dto = modelMapper.map(vo, TodoDTO.class);
+            dtoList.add(dto);
+        }
+
+        return dtoList;
+    }
+
 }
+
+
+
+
+
+
+
+
+
+
