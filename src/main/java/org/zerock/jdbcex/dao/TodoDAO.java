@@ -87,6 +87,7 @@ public class TodoDAO {
                 .tno(resultSet.getLong("tno"))
                 .title(resultSet.getString("title"))
                 .dueDate(resultSet.getDate("duedate").toLocalDate())
+                .finished(resultSet.getBoolean("finished"))
                 .build();
         return vo;
     }

@@ -2,15 +2,16 @@
   Created by IntelliJ IDEA.
   User: it
   Date: 2024-04-18
-  Time: 오전 11:14
+  Time: 오후 2:08
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>할일 읽기</title>
+    <title>수정/삭제</title>
 </head>
 <body>
+<form action="/todo/modify" method="post">
     <div>
         <input type="text" name="tno" value="${dto.tno}" readonly>
     </div>
@@ -21,11 +22,18 @@
         <input type="date" name="dueDate" value="${dto.dueDate}" readonly>
     </div>
     <div>
-        <input type="checkbox" name="finished" ${dto.finished ? "checked": ""} readonly >
+        <input type="checkbox" name="finished" ${dto.finished ? "checked":""} >
     </div>
     <div>
-        <a href="/todo/modify?tno=${dto.tno}">수정/삭제</a>
-        <a href="/todo/list">리스트</a>
+        <button type="submit">수정하기</button>
     </div>
+</form>
+<%--삭제하기 폼--%>
+<form action="/todo/remove" method="post">
+    <input type="hidden" name="tno" value="${dto.tno}" readonly>
+    <div>
+        <button type="submit">삭제</button>
+    </div>
+</form>
 </body>
 </html>
