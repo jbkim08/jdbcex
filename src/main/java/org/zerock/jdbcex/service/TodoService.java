@@ -50,6 +50,13 @@ public enum TodoService {
     }
 
 
+    //특정 할일을 가져오는 서비스
+    public TodoDTO get(Long tno) throws Exception {
+        log.info("tno: " + tno);
+        TodoVO todoVO = dao.selectOne(tno);
+        TodoDTO dto = modelMapper.map(todoVO, TodoDTO.class);
+        return dto;
+    }
 
 }
 
